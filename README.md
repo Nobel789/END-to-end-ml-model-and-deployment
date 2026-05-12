@@ -17,7 +17,7 @@ cd .\END-to-end-ml-model-and-deployment
 node -v
 npm -v
 ```
-Use Node.js 18+ if possible.
+Use an active Node.js LTS release (for example Node.js 24 LTS).
 
 ### 3) Install dependencies
 ```powershell
