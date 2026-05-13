@@ -1,7 +1,7 @@
 # Beginner-Friendly Next.js Bike Demand App
 
 This project is a **Next.js + Tailwind CSS** beginner-friendly app.
-Users enter simple values (temperature, humidity, windspeed, holiday, working day), then the app shows an estimated bike rental demand output.
+Users enter a place name, short place description, and weather values (temperature, humidity, windspeed, holiday, working day), then the app shows estimated bike rental demand output with place-based differences.
 
 ## Run on Windows PowerShell
 
