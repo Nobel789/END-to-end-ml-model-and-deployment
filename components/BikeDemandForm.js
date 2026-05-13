@@ -29,7 +29,21 @@ export default function BikeDemandForm() {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setForm((previous) => ({ ...previous, [name]: value }));
+
+    setForm((previous) => {
+      const next = { ...previous, [name]: value };
+
+      // A holiday cannot also be a working day in this simplified UI model.
+      if (name === 'holiday' && value === 'yes') {
+        next.workingday = 'no';
+      }
+
+      if (name === 'workingday' && value === 'yes') {
+        next.holiday = 'no';
+      }
+
+      return next;
+    });
   }
 
   function handleSubmit(event) {
@@ -71,7 +85,13 @@ export default function BikeDemandForm() {
 
         <label className="flex flex-col gap-2 md:col-span-2">
           <span className="font-medium">Working day?</span>
-          <select name="workingday" value={form.workingday} onChange={handleChange} className="rounded-lg border border-slate-300 p-2">
+          <select
+            name="workingday"
+            value={form.workingday}
+            onChange={handleChange}
+            disabled={form.holiday === 'yes'}
+            className="rounded-lg border border-slate-300 p-2 disabled:cursor-not-allowed disabled:bg-slate-100"
+          >
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
